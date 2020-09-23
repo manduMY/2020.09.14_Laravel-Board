@@ -10,6 +10,6 @@ class Content extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'context',
+        'title', 'context'
     ];
 }

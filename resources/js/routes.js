@@ -5,17 +5,17 @@ import ContentDetail from '../components/ContentDetail.vue';
 export const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'Board',
         component: Board
     },
     {
-        path: '/create/:context_id?',
-        name: 'create',
-        component: Create
-    },
-    {
-        path: '/detail/:context_id',
+        path: '/detail/:id',
         name: 'ContentDetail',
         component: ContentDetail
+    },
+    {
+        path: '/create/:id?',
+        name: 'Create',
+        component: Create
     }
 ];

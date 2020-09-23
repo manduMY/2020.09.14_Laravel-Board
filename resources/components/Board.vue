@@ -6,7 +6,7 @@
       :current-page="currentPage" 
       :items="items" 
       :fields="fields" 
-      ></b-table>
+      @row-clicked="rowClick"></b-table>
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -21,9 +21,10 @@
 import {findContentList} from '../service/crud'
 
 export default {
+  name: "Board",
   async created() {
     const ret = await findContentList();
-    this.items = ret.data.sort((a,b) => {return b.context_id - a.context_id});
+    this.items = ret.data;
   },
   data() {
     return {
@@ -31,7 +32,7 @@ export default {
       perPage: 10,
       fields: [
         {
-          key: 'context_id',
+          key: 'id',
           label: '글번호',
         },
         {
@@ -52,12 +53,16 @@ export default {
     }
   },
   methods: {
+    rowClick(item, index, e) {
+      this.$router.push({
+        path: `/detail/${item.id}`
+      })
+    },
     writeContent() {
-
       this.$router.push({
         path: '/create'
       })
     }
   }
-}
+  };
 </script>
