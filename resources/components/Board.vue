@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     rows() {
-      return this.items.length
+      return this.items.length;
     }
   },
   methods: {

@@ -17,7 +17,6 @@ export const addContent = ({ title, context }) => {
   };
   
   export const deleteContent = ({ content_id }) => {
-    console.log(`content_id:` + content_id);
     axios.delete(`/api/delete/${content_id}`)
          .then((response) => {
          });

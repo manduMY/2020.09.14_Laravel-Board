@@ -11,11 +11,14 @@ class ContentController extends Controller
 {
     public function index()
     {
-        $contents = Content::latest()->get();
         // 예외 처리: 게시글 0개일 때 id 1번부터 시작
-        if($contents->count() <= 0) {
+        if(DB::table('contents')->count() <= 0) {
             DB::statement("ALTER TABLE contents AUTO_INCREMENT = 1;");
         }
+        $contents = Cache::remember('contents_cache', now()->addMinutes(5), function() {
+            return DB::table('contents')->latest()->get();
+        });
+        $content = Content::latest()->get();
         // data로 전달해주기 위해 Resource로 반환
         return ContentResource::collection($contents);
     }
@@ -40,6 +43,7 @@ class ContentController extends Controller
             'context' => $request->input('context')
         ]);
         $content->save();
+        Cache::flush();
 
         // 정상적으로 데이터 넣은 후 정상 response 보냄.
         return response()->json([
@@ -66,14 +70,16 @@ class ContentController extends Controller
 
         $content = Content::find($id);
         $content->update($request->all());
-       
+        Cache::flush();
+
         return response()->json([
         ], Response::HTTP_OK);
     }
     public function delete($id)
     {
-        $content = Content::find($id);
-        $content->delete();
+        DB::table('contents')->delete($id);
+        Cache::flush();
+
         DB::statement("ALTER TABLE contents AUTO_INCREMENT = ${id};");
     }
 }
