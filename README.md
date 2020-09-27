@@ -1,4 +1,4 @@
-Laravel + Vue SPA + MariaDB + Redis + tdd - Board
+Laravel Homestead + Vue SPA + MariaDB + Redis + tdd - Board
 ===
 
 <a href="#"><img src="https://img.shields.io/github/last-commit/manduMY/2020.09.14_Laravel-Board.svg?style=flat" /></a>
