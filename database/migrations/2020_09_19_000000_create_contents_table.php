@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateContentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('contents', function (Blueprint $table) {
@@ -20,12 +15,7 @@ class CreateContentsTable extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('contents');

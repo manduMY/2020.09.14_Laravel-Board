@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('content_list', 'ContentController@index');
 Route::post('create', 'ContentController@create');
-Route::get('find_content/{id}', 'ContentController@find_content');
+Route::get('findContent/{id}', 'ContentController@findContent');
 Route::put('update/{id}', 'ContentController@update');
 Route::delete('delete/{id}', 'ContentController@delete');

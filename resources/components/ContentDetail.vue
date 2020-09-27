@@ -42,7 +42,7 @@ export default {
         },
         created() {
             this.axios
-                .get(`/api/find_content/${this.$route.params.id}`)
+                .get(`/api/findContent/${this.$route.params.id}`)
                 .then((response) => {
                     this.content = response.data;
                 });
@@ -50,7 +50,8 @@ export default {
   methods: {
     async deleteData() {
       if(this.content.id > 0) {
-        await deleteContent({content_id: this.content.id});
+        await deleteContent({content_id: this.content.idqq});
+        alert("게시물이 삭제 되었습니다.");
         this.$router.push({name: 'Board'});
       } else {
         alert("상세 페이지 로딩중입니다. 잠시만 기다려주세요!");

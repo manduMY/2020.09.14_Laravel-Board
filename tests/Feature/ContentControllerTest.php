@@ -11,6 +11,7 @@ class ContentControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
     
+    /** @test */
     public function users_can_read_all_contents()
     {
         // 에러 log 메세지 상세 출력
@@ -32,7 +33,7 @@ class ContentControllerTest extends TestCase
 
         $content = Content::factory()->create();
         
-        $response = $this->get('/api/find_content/'.$content->id);
+        $response = $this->get('/api/findContent/'.$content->id);
 
         $response->assertSee($content->title)
                  ->assertSee($content->context);

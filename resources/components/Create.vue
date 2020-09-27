@@ -23,7 +23,7 @@ export default {
   async created() {
     if (this.$route.params.id > 0) {
       this.axios
-          .get(`/api/find_content/${this.$route.params.id}`)
+          .get(`/api/findContent/${this.$route.params.id}`)
           .then((response) => {
               this.content = response.data;
               this.subject = this.content.title;
@@ -46,7 +46,9 @@ export default {
     },
     async updateContent() {
       // 타이틀 제목 여부 확인 후 axios 동작.
-      if(this.subject) {
+      if(!this.subject || !this.context) {
+        alert("제목과 본문을 입력해주세요!!!");
+      } else {
         this.content.title = this.subject;
         this.content.context = this.context;
         this.axios.put(`/api/update/${this.$route.params.id}`, this.content)
@@ -55,8 +57,6 @@ export default {
         }).catch(error => {
           console.log(error.response);
         });
-      } else {
-        alert("제목을 입력해주세요!!!");
       }
     },
     cancle() {
