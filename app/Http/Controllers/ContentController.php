@@ -82,8 +82,7 @@ class ContentController extends Controller
 
     public function delete($id)
     {
-        DB::table('contents')->delete($id);
         Redis::flushall();
-        DB::statement("ALTER TABLE contents AUTO_INCREMENT = ${id};");
+        DB::table('contents')->delete($id);
     }
 }

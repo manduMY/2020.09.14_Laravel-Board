@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('content_list', 'ContentController@index');
+Route::get('contentList', 'ContentController@index');
 Route::post('create', 'ContentController@create');
 Route::get('findContent/{id}', 'ContentController@findContent');
 Route::put('update/{id}', 'ContentController@update');

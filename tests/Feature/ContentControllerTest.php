@@ -21,7 +21,7 @@ class ContentControllerTest extends TestCase
         $content = Content::factory()->create();
         
         // content api를 방문한다.
-        $response = $this->get('/api/content_list');
+        $response = $this->get('/api/contentList');
 
         $response->assertSee($content->title);
     }

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function findContentList() {
-    const promise = axios.get("/api/content_list");
+    const promise = axios.get("/api/contentList");
 
     const dataPromise = promise.then((response) => response.data);
 
