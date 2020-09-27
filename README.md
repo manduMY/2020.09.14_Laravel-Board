@@ -47,13 +47,19 @@ CRUD 기능
 
 DataBase
 ---
-MariaDB
+php artisan migrate를 통해 테이블 스키마 마이그레이션 했습니다.
+/database/migrations/2020_09_19_000000_create_contents_table.php 파일은 마이그레이션 파일입니다.
 
-<img src="markdown/img/Main_technical_element.png" width=1000 >
+MariaDB - 데이터베이스: board, 테이블: contents
+테이블 레코드 보기
+<img src="markdown/img/mariaDB.jpg" width=1000 >
 
 Redis 기능
-
-| Redis: Set, Get을 이용한 캐쉬 기능 |
+Redis::setex를 사용하여 임의로 180초만 레디스 저장소에 데이터들 저장합니다.
+Redis::get을 통해 레디스 저장소에 데이터 키값이 존재하면 value값을 가져옵니다.
+레디스 저장소에 json 데이터로 저장했습니다.
+사용한 이유: 게시판을 새로고침해서 볼때마다 모든 리스트들을 데이터베이스에 매번 접근해서 가져오는데 레디스 저장소에 저장 해놓고 레디스 저장소에서 데이터를 가져오면 더 빨리 가져올 수 있기 때문입니다. 삽입, 삭제, 수정이 있을때마다 redis 저장소의 값만 최신화 시켜주면 캐시 기능처럼 사용할 수 있다고 생각해서 썼습니다. 
+| Redis::setex를 사용하여 임의로 180초 뒤에 레디스 |
 |:----------------------------------------:|
 |<img src="markdown/img/Redis.gif" width=1000 />|
 
