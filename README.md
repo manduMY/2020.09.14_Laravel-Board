@@ -1,4 +1,5 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Laravel + Vue SPA + MariaDB + Redis + tdd
+===
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -7,55 +8,80 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+게시판 기능
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Keyword: Vue, SPA, MariaDB, Redis, TDD
+- 개발 기간: 2020.09.14 ~ 2020.09.27
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+게시판 CRUD 기능 구현하기.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<br/>
 
-## Learning Laravel
+개발 환경
+---
+Window10, Vagrant, PHP 7.4
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<br/>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+샘플 화면
+---
+CRUD 기능
 
-## Laravel Sponsors
+| Create: 게시글 생성 |
+|:----------------------------------------:|
+|<img src="markdown/img/BoardCreate.gif" width=1000 />|
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+| Read: 상세글 읽기 |
+|:----------------------------------------:|
+|<img src="markdown/img/BoardRead.gif" width=1000 />|
 
-### Premium Partners
+| Update: 게시글 수정 |
+|:----------------------------------------:|
+|<img src="markdown/img/BoardUpdate.gif" width=1000 />|
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+| Delete: 글 삭제 |
+|:----------------------------------------:|
+|<img src="markdown/img/BoardDelete.gif" width=1000 />|
 
-## Contributing
+<br/>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+DataBase
+---
+MariaDB
 
-## Code of Conduct
+<img src="markdown/img/Main_technical_element.png" width=1000 >
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Redis 기능
 
-## Security Vulnerabilities
+| Redis: Set, Get을 이용한 캐쉬 기능 |
+|:----------------------------------------:|
+|<img src="markdown/img/Redis.gif" width=1000 />|
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<br/>
 
-## License
+TDD (테스트 주도 개발)
+---
+/tests/Feature/ContentControllerTest.php 파일에 테스트 메서드 작성 했습니다.
+CRUD 기능을 가지고 있는 파일(ContentController.php)을 중점적으로 테스트 했습니다.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Controller 메서드들을 확인한 테스트 수행 결과
+<img src="markdown/img/TDD.png" width=1000 >
+
+<br/>
+
+Vue.js SPA
+---
+- Componet
+  - 컴포넌트는 Board.vue, ContentDetail.vue, Create.vue, Header.vue로 구성되어 있습니다.
+  - Header 컴포넌트는 웹페이지 상단에 고정이며 게시판 CRUD 기능 수행시 Board, ContentDetail, Create 컴포넌트만 바꿨습니다.
+
+- Vue-Router
+  - routes.js 파일에 라우터들을 선언 해놓고 각 컴포넌트에서 활용했습니다.
+  - router.push를 통해 주소로 id값을 주고받을 때 편했습니다.
+  
+- axios
+  - 클라이언트에서 서버간 통신을 하기 위해 사용했습니다.
+  - get, post, put, delete 기능을 통해 Controller에 있는 CRUD 기능에 편하게 접근할 수 있었습니다.
+  - javascript의 ajax와 비슷한 느낌이며 비동기 처리를 위해 async와 await를 사용했습니다.
+  
+<br/>
