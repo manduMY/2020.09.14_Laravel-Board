@@ -31,7 +31,7 @@ Laravel + Vue SPA + MariaDB + Redis + tdd - Board
 
 샘플 화면
 ---
-CRUD 기능
+CRUD 게시판 기능
 
 | Create: 게시글 생성 |
 |:----------------------------------------:|
@@ -99,4 +99,29 @@ Vue.js SPA
   - get, post, put, delete 기능을 통해 Controller에 있는 CRUD 기능에 편하게 접근할 수 있었습니다.
   - javascript의 ajax와 비슷한 느낌이며 비동기 처리를 위해 async와 await를 사용했습니다.
   
+<br/>
+
+자주 사용했던 명령어
+---
+- 가상머신 Vagrant 안에서 사용
+ - vagrant up
+ - vagrant reload
+ - vagrant ssh
+ - php artisan cache:clear
+ - php artisan route:clear
+ - php artisan config:clear
+ - php artisan migrate
+ - php artisan migrate:fresh
+ - php artisan serve
+ - php artisan make:controller ['file name']
+ - composer dump-autoload
+ - redis-cli
+ - npm run dev
+ - npm run watch
+ 
+- redis-cli 명령어
+ - keys *
+ - get ['key name']
+ - flushall
+ 
 <br/>
