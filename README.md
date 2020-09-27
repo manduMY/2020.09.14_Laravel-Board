@@ -60,7 +60,7 @@ DataBase
 - MariaDB
   - 데이터베이스 이름: board, 테이블 이름: contents
   - 테이블 레코드 보기
-  <img src="markdown/img/MariaDB.jpg" width=1000 height=500>
+  <img src="markdown/img/MariaDB.jpg" width=1000 height=800>
   
 - Redis 저장소
   - Redis::setex를 사용하여 임의로 180초만 레디스 저장소에 데이터들 저장합니다.
