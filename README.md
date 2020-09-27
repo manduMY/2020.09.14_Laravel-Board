@@ -1,7 +1,6 @@
 Laravel + Vue SPA + MariaDB + Redis + tdd
 ===
 
-<p align="center">
 <a href="#"><img src="https://img.shields.io/github/last-commit/manduMY/2020.09.14_Laravel-Board.svg?style=flat" /></a>
 <a href="#"><img src="https://img.shields.io/github/languages/top/manduMY/2020.09.14_Laravel-Board.svg?colorB=yellow&style=flat" /></a>
 <a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
