@@ -1,11 +1,9 @@
-Laravel + Vue SPA + MariaDB + Redis + tdd
+Laravel + Vue SPA + MariaDB + Redis + tdd - Board
 ===
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a href="#"><img src="https://img.shields.io/github/last-commit/manduMY/2020.09.14_Laravel-Board.svg?style=flat" /></a>
+<a href="#"><img src="https://img.shields.io/github/languages/top/manduMY/2020.09.14_Laravel-Board.svg?colorB=yellow&style=flat" /></a>
+<a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
 </p>
 
 게시판 기능
@@ -19,8 +17,16 @@ Laravel + Vue SPA + MariaDB + Redis + tdd
 
 개발 환경
 ---
-Window10, Vagrant, PHP 7.4
-
+ - Window10의 Visual Code
+ - VirtualBox Vagrant 가상머신의 ubuntu 18.04.5 LTS 버전 운영체제 
+ - laravel Framework 8.5.0
+ - homestead
+ - Vagrant version 2.2.10
+ - PHP version 7.4.10
+ - composer version 1.10.13
+ - MariaDB server version 10.5.5
+ - phpRedis
+ 
 <br/>
 
 샘플 화면
@@ -47,19 +53,22 @@ CRUD 기능
 
 DataBase
 ---
-php artisan migrate를 통해 테이블 스키마 마이그레이션 했습니다.
-/database/migrations/2020_09_19_000000_create_contents_table.php 파일은 마이그레이션 파일입니다.
+- Migration
+  - php artisan migrate를 통해 테이블 스키마 마이그레이션 했습니다.
+  - /database/migrations/2020_09_19_000000_create_contents_table.php 파일은 마이그레이션 파일입니다.
 
-MariaDB - 데이터베이스: board, 테이블: contents
-테이블 레코드 보기
-<img src="markdown/img/mariaDB.jpg" width=1000 >
+- MariaDB
+  - 데이터베이스 이름: board, 테이블 이름: contents
+  - 테이블 레코드 보기
+  <img src="markdown/img/MariaDB.jpg" width=1000 height=1200>
+  
+- Redis 저장소
+  - Redis::setex를 사용하여 임의로 180초만 레디스 저장소에 데이터들 저장합니다.
+  - Redis::get을 통해 레디스 저장소에 데이터 키값이 존재하면 value값을 가져옵니다.
+  - 레디스 저장소에 json 데이터로 저장했습니다.
+  - 사용한 이유: 게시판을 새로고침해서 볼때마다 모든 리스트들을 데이터베이스에 매번 접근해서 가져오는데 레디스 저장소에 저장 해놓고 레디스 저장소에서 데이터를 가져오면 더 빨리 가져올 수 있기 때문입니다. 삽입, 삭제, 수정이 있을때마다 redis 저장소의 값만 최신화 시켜주면 캐시 기능처럼 사용할 수 있다고 생각해서 썼습니다.
 
-Redis 기능
-Redis::setex를 사용하여 임의로 180초만 레디스 저장소에 데이터들 저장합니다.
-Redis::get을 통해 레디스 저장소에 데이터 키값이 존재하면 value값을 가져옵니다.
-레디스 저장소에 json 데이터로 저장했습니다.
-사용한 이유: 게시판을 새로고침해서 볼때마다 모든 리스트들을 데이터베이스에 매번 접근해서 가져오는데 레디스 저장소에 저장 해놓고 레디스 저장소에서 데이터를 가져오면 더 빨리 가져올 수 있기 때문입니다. 삽입, 삭제, 수정이 있을때마다 redis 저장소의 값만 최신화 시켜주면 캐시 기능처럼 사용할 수 있다고 생각해서 썼습니다. 
-| Redis::setex를 사용하여 임의로 180초 뒤에 레디스 |
+| Redis 저장소에 저장 확인 |
 |:----------------------------------------:|
 |<img src="markdown/img/Redis.gif" width=1000 />|
 
