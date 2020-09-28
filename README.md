@@ -103,10 +103,12 @@ Vue.js SPA
 
 자주 사용했던 명령어
 ---
-- 가상머신 Vagrant 안에서 사용
+- 가상머신 명령어
   - vagrant up
   - vagrant reload
   - vagrant ssh
+  
+- 가상머신 Vagrant 안에서 사용
   - php artisan cache:clear
   - php artisan route:clear
   - php artisan config:clear
@@ -118,6 +120,8 @@ Vue.js SPA
   - redis-cli
   - npm run dev
   - npm run watch
+  - phpunit
+  - vendor/bin/phpunit --filter ['method name']
   
 - redis-cli 명령어
   - keys *
