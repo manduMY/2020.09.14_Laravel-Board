@@ -49,7 +49,7 @@ export default {
         },
   methods: {
     async deleteData() {
-        await deleteContent({content_id: this.content.idqq});
+        await deleteContent({content_id: this.content.id});
 
         await this.$router.push({name: 'Board'});
       
